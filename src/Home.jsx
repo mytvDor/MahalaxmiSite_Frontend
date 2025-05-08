@@ -1,373 +1,3 @@
-// // import React from "react";
-
-// // const Home = () => {
-// //   return (
-// //     <div>
-// //       <section class="text-gray-600 body-font">
-// //         <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-// //           <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-// //             <img
-// //               class="object-cover object-center rounded"
-// //               alt="hero"
-// //               src="https://dummyimg .com/720x600"
-// //             />
-// //           </div>
-// //           <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-// //             <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-// //               Before they sold out
-// //               <br class="hidden lg:inline-block" />
-// //               readymade gluten
-// //             </h1>
-// //             <p class="mb-8 leading-relaxed">
-// //               Copper mug try-hard pitchfork pour-over freegan heirloom neutra
-// //               air plant cold-pressed tacos poke beard tote bag. Heirloom echo
-// //               park mlkshk tote bag selvage hot chicken authentic tumeric
-// //               truffaut hexagon try-hard chambray.
-// //             </p>
-// //             <div class="flex justify-center">
-// //               <button class="inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg">
-// //                 Button
-// //               </button>
-// //               <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
-// //                 Button
-// //               </button>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </section>
-// //       <section class="text-gray-600 body-font">
-// //         <div class="container px-5 py-24 mx-auto flex flex-wrap">
-// //           <div class="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto">
-// //             <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-// //               <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-// //             </div>
-// //             <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
-// //               1
-// //             </div>
-// //             <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-// //               <div class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-12 h-12"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-// //                 <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-// //                   Shooting Stars
-// //                 </h2>
-// //                 <p class="leading-relaxed">
-// //                   VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk
-// //                   bespoke try-hard cliche palo santo offal.
-// //                 </p>
-// //               </div>
-// //             </div>
-// //           </div>
-// //           <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-// //             <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-// //               <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-// //             </div>
-// //             <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
-// //               2
-// //             </div>
-// //             <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-// //               <div class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-12 h-12"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-// //                 <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-// //                   The Catalyzer
-// //                 </h2>
-// //                 <p class="leading-relaxed">
-// //                   VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk
-// //                   bespoke try-hard cliche palo santo offal.
-// //                 </p>
-// //               </div>
-// //             </div>
-// //           </div>
-// //           <div class="flex relative pb-20 sm:items-center md:w-2/3 mx-auto">
-// //             <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-// //               <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-// //             </div>
-// //             <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
-// //               3
-// //             </div>
-// //             <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-// //               <div class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-12 h-12"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <circle cx="12" cy="5" r="3"></circle>
-// //                   <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-// //                 <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-// //                   The 400 Blows
-// //                 </h2>
-// //                 <p class="leading-relaxed">
-// //                   VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk
-// //                   bespoke try-hard cliche palo santo offal.
-// //                 </p>
-// //               </div>
-// //             </div>
-// //           </div>
-// //           <div class="flex relative pb-10 sm:items-center md:w-2/3 mx-auto">
-// //             <div class="h-full w-6 absolute inset-0 flex items-center justify-center">
-// //               <div class="h-full w-1 bg-gray-200 pointer-events-none"></div>
-// //             </div>
-// //             <div class="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-yellow-500 text-white relative z-10 title-font font-medium text-sm">
-// //               4
-// //             </div>
-// //             <div class="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-// //               <div class="flex-shrink-0 w-24 h-24 bg-yellow-100 text-yellow-500 rounded-full inline-flex items-center justify-center">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-12 h-12"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-// //                   <circle cx="12" cy="7" r="4"></circle>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
-// //                 <h2 class="font-medium title-font text-gray-900 mb-1 text-xl">
-// //                   Neptune
-// //                 </h2>
-// //                 <p class="leading-relaxed">
-// //                   VHS cornhole pop-up, try-hard 8-bit iceland helvetica. Kinfolk
-// //                   bespoke try-hard cliche palo santo offal.
-// //                 </p>
-// //               </div>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </section>
-// //       <section class="text-gray-600 body-font">
-// //         <div class="container px-5 py-24 mx-auto flex flex-wrap">
-// //           <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-// //             <img
-// //               alt="feature"
-// //               class="object-cover object-center h-full w-full"
-// //               src="https://dummyimg .com/460x500"
-// //             />
-// //           </div>
-// //           <div class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
-// //             <div class="flex flex-col mb-10 lg:items-start items-center">
-// //               <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-yellow-100 text-yellow-500 mb-5">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-6 h-6"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow">
-// //                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-// //                   Shooting Stars
-// //                 </h2>
-// //                 <p class="leading-relaxed text-base">
-// //                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-// //                   taxidermy. Gastropub indxgo juice poutine.
-// //                 </p>
-// //                 <a class="mt-3 text-yellow-500 inline-flex items-center">
-// //                   Learn More
-// //                   <svg
-// //                     fill="none"
-// //                     stroke="currentColor"
-// //                     stroke-linecap="round"
-// //                     stroke-linejoin="round"
-// //                     stroke-width="2"
-// //                     class="w-4 h-4 ml-2"
-// //                     viewBox="0 0 24 24"
-// //                   >
-// //                     <path d="M5 12h14M12 5l7 7-7 7"></path>
-// //                   </svg>
-// //                 </a>
-// //               </div>
-// //             </div>
-// //             <div class="flex flex-col mb-10 lg:items-start items-center">
-// //               <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-yellow-100 text-yellow-500 mb-5">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-6 h-6"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <circle cx="6" cy="6" r="3"></circle>
-// //                   <circle cx="6" cy="18" r="3"></circle>
-// //                   <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow">
-// //                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-// //                   The Catalyzer
-// //                 </h2>
-// //                 <p class="leading-relaxed text-base">
-// //                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-// //                   taxidermy. Gastropub indxgo juice poutine.
-// //                 </p>
-// //                 <a class="mt-3 text-yellow-500 inline-flex items-center">
-// //                   Learn More
-// //                   <svg
-// //                     fill="none"
-// //                     stroke="currentColor"
-// //                     stroke-linecap="round"
-// //                     stroke-linejoin="round"
-// //                     stroke-width="2"
-// //                     class="w-4 h-4 ml-2"
-// //                     viewBox="0 0 24 24"
-// //                   >
-// //                     <path d="M5 12h14M12 5l7 7-7 7"></path>
-// //                   </svg>
-// //                 </a>
-// //               </div>
-// //             </div>
-// //             <div class="flex flex-col mb-10 lg:items-start items-center">
-// //               <div class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-yellow-100 text-yellow-500 mb-5">
-// //                 <svg
-// //                   fill="none"
-// //                   stroke="currentColor"
-// //                   stroke-linecap="round"
-// //                   stroke-linejoin="round"
-// //                   stroke-width="2"
-// //                   class="w-6 h-6"
-// //                   viewBox="0 0 24 24"
-// //                 >
-// //                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-// //                   <circle cx="12" cy="7" r="4"></circle>
-// //                 </svg>
-// //               </div>
-// //               <div class="flex-grow">
-// //                 <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-// //                   Neptune
-// //                 </h2>
-// //                 <p class="leading-relaxed text-base">
-// //                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-// //                   taxidermy. Gastropub indxgo juice poutine.
-// //                 </p>
-// //                 <a class="mt-3 text-yellow-500 inline-flex items-center">
-// //                   Learn More
-// //                   <svg
-// //                     fill="none"
-// //                     stroke="currentColor"
-// //                     stroke-linecap="round"
-// //                     stroke-linejoin="round"
-// //                     stroke-width="2"
-// //                     class="w-4 h-4 ml-2"
-// //                     viewBox="0 0 24 24"
-// //                   >
-// //                     <path d="M5 12h14M12 5l7 7-7 7"></path>
-// //                   </svg>
-// //                 </a>
-// //               </div>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </section>
-// //       <section class="text-gray-400 bg-gray-900 body-font">
-// //         <div class="container px-5 py-24 mx-auto flex flex-wrap">
-// //           <div class="flex w-full mb-20 flex-wrap">
-// //             <h1 class="sm:text-3xl text-2xl font-medium title-font text-white lg:w-1/3 lg:mb-0 mb-4">
-// //               Master Cleanse Reliac Heirloom
-// //             </h1>
-// //             <p class="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
-// //               Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-// //               gentrify, subway tile poke farm-to-table. Franzen you probably
-// //               haven't heard of them man bun deep jianbing selfies heirloom.
-// //             </p>
-// //           </div>
-// //           <div class="flex flex-wrap md:-m-2 -m-1">
-// //             <div class="flex flex-wrap w-1/2">
-// //               <div class="md:p-2 p-1 w-1/2">
-// //                 <img
-// //                   alt="gallery"
-// //                   class="w-full object-cover h-full object-center block"
-// //                   src="https://dummyimg .com/500x300"
-// //                 />
-// //               </div>
-// //               <div class="md:p-2 p-1 w-1/2">
-// //                 <img
-// //                   alt="gallery"
-// //                   class="w-full object-cover h-full object-center block"
-// //                   src="https://dummyimg .com/501x301"
-// //                 />
-// //               </div>
-// //               <div class="md:p-2 p-1 w-full">
-// //                 <img
-// //                   alt="gallery"
-// //                   class="w-full h-full object-cover object-center block"
-// //                   src="https://dummyimg .com/600x360"
-// //                 />
-// //               </div>
-// //             </div>
-// //             <div class="flex flex-wrap w-1/2">
-// //               <div class="md:p-2 p-1 w-full">
-// //                 <img
-// //                   alt="gallery"
-// //                   class="w-full h-full object-cover object-center block"
-// //                   src="https://dummyimg .com/601x361"
-// //                 />
-// //               </div>
-// //               <div class="md:p-2 p-1 w-1/2">
-// //                 <img
-// //                   alt="gallery"
-// //                   class="w-full object-cover h-full object-center block"
-// //                   src="https://dummyimg .com/502x302"
-// //                 />
-// //               </div>
-// //               <div class="md:p-2 p-1 w-1/2">
-// //                 <img
-// //                   alt="gallery"
-// //                   class="w-full object-cover h-full object-center block"
-// //                   src="https://dummyimg .com/503x303"
-// //                 />
-// //               </div>
-// //             </div>
-// //           </div>
-// //         </div>
-// //       </section>
-// //     </div>
-// //   );
-// // };
-
-// // export default Home;
-// // import img from "next/img "
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -524,7 +154,7 @@ export default function Home() {
                   className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white border-0 rounded-full px-8 py-6 shadow-lg shadow-amber-600/20 hover:shadow-amber-600/40 transition-all duration-300"
                 >
                   <Sun className="mr-2 h-5 w-5" />
-                  Visit Temple
+                  Visit Bookings
                 </Button>
               </div>
 
@@ -575,16 +205,17 @@ export default function Home() {
                   A Sacred Space for Divine Connection
                 </h2>
                 <p className="text-amber-800 md:text-lg leading-relaxed">
-                  Our mandir is a vibrant center for worship, cultural
-                  activities, and community service. Founded in 1985, we have
-                  been serving the spiritual needs of devotees for over three
-                  decades.
+                  The Mahalaxmi Temple of Kolhapur is a revered center of
+                  devotion, rich in spiritual tradition, cultural significance,
+                  and community faith. For centuries, it has drawn countless
+                  devotees seeking the blessings of Goddess Mahalaxmi.
                 </p>
                 <p className="text-amber-800 md:text-lg leading-relaxed">
-                  The temple is built according to ancient{" "}
+                  The temple is constructed following ancient{" "}
                   <span className="font-semibold">वास्तु शास्त्र</span> (Vastu
-                  Shastra) principles, creating a harmonious environment that
-                  facilitates spiritual connection and divine presence.
+                  Shastra) principles, fostering a spiritually uplifting and
+                  harmonious atmosphere that deepens the connection between
+                  devotees and the divine.
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 pt-4">
@@ -592,9 +223,7 @@ export default function Home() {
                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mb-3">
                       <Lotus className="h-5 w-5 text-white" />
                     </div>
-                    <h3 className="font-semibold text-amber-900">
-                      Spiritual Guidance
-                    </h3>
+                    <h3 className="font-semibold text-amber-900">Guidance</h3>
                     <p className="text-sm text-amber-700 mt-1">
                       Expert priests providing authentic rituals and guidance
                     </p>
@@ -602,23 +231,27 @@ export default function Home() {
 
                   <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-md border border-amber-200 transition-transform hover:scale-105">
                     <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mb-3">
-                      <Heart className="h-5 w-5 text-white" />
+                      {/* <Heart className="h-5 w-5 text-white" /> */}
+                      <Lotus className="h-5 w-5 text-white" />
                     </div>
                     <h3 className="font-semibold text-amber-900">
-                      Community Service
+                      Abhisheck Booking Service
                     </h3>
                     <p className="text-sm text-amber-700 mt-1">
-                      Regular charitable activities and community outreach
+                      Abhisheck Booking Service{" "}
                     </p>
                   </div>
                 </div>
 
                 <div className="flex pt-4">
-                  <Link href="#about-more">
-                    <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-full px-6 shadow-md hover:shadow-lg transition-all duration-300">
-                      Learn More About Us
-                    </Button>
-                  </Link>
+                  {/* <Link href="/booking"> */}
+                  <Button
+                    onClick={() => navigate("/booking")}
+                    className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-full px-6 shadow-md hover:shadow-lg transition-all duration-300"
+                  >
+                    Go to Abhishek Booking
+                  </Button>
+                  {/* </Link> */}
                 </div>
               </div>
 
@@ -631,12 +264,12 @@ export default function Home() {
                     className="object-cover w-full h-full"
                   />
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg flex items-center justify-center p-2 border border-amber-200">
+                {/* <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg flex items-center justify-center p-2 border border-amber-200">
                   <div className="text-center">
                     <p className="text-xs text-amber-800">Established</p>
                     <p className="text-xl font-bold text-amber-900">1985</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -666,40 +299,29 @@ export default function Home() {
             <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  name: "श्री गणेश",
+                  title: "मराठी (Marathi)",
                   description:
-                    "The remover of obstacles and lord of beginnings, worshipped first in all ceremonies.",
-                  day: "Special puja on Tuesdays",
+                    "महालक्ष्मी देवी ही कोल्हापूरची अधिष्ठात्री देवी आहे. ती श्री विष्णूची अर्धांगिनी असून ऐश्वर्य, समृद्धी आणि सौभाग्याची देवता म्हणून पूजली जाते. कोल्हापुरातील मंदिर हे अठरापैकी एक शक्तिपीठ मानले जाते.",
                 },
                 {
-                  name: "श्री राम परिवार",
+                  title: "हिन्दी (Hindi)",
                   description:
-                    "Lord Rama with Sita, Lakshmana and Hanuman, embodying ideal conduct and devotion.",
-                  day: "Special puja on Sundays",
+                    "महालक्ष्मी देवी कोल्हापुर की अधिष्ठात्री देवी हैं। वे भगवान विष्णु की पत्नी हैं और धन, समृद्धि तथा सौभाग्य की देवी मानी जाती हैं। कोल्हापुर का मंदिर भारत के प्रमुख शक्तिपीठों में से एक है।",
                 },
                 {
-                  name: "श्री कृष्ण",
+                  title: "ಕನ್ನಡ (Kannada)",
                   description:
-                    "The divine incarnation who delivered the wisdom of Bhagavad Gita and symbol of love.",
-                  day: "Special puja on Wednesdays",
+                    "ಮಹಾಲಕ್ಷ್ಮಿ ದೇವಿ ಕೊಲ್ಹಾಪುರದ ಅಧಿಷ್ಠಾತ್ರೀ ದೇವಿ ಆಗಿದ್ದಾರೆ. ಅವರು ವಿಷ್ಣುವಿನ ಪತ್ನಿಯಾಗ 있으며, ಐಶ್ವರ್ಯ, ಸಮೃದ್ಧಿ ಮತ್ತು ಶುಭದೇವತೆಯಾಗಿ ಪೂಜಿಸಲ್ಪಡುತ್ತಾರೆ. ಕೊಲ್ಹಾಪುರದ ದೇವಸ್ಥಾನವು ಪ್ರಮುಖ ಶಕ್ತಿಪೀಠಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ.",
                 },
+                // {
+                //   title: "தமிழ் (Tamil)",
+                //   description:
+                //     "மகாலட்சுமி தேவி கொல்ஹாபூரின் அதிஷ்டாத்ரி தேவியாகத் திகழ்கிறார். அவள் திருமால் என்பவரின் மனைவியாகவும், செல்வம், வளம் மற்றும் удаவுகூர்ந்த வாழ்வின் கடவுளியாகவும் போற்றப்படுகிறார். கொல்ஹாபூர் கோயில் முக்கிய சக்திபீடமாகக் கருதப்படுகிறது.",
+                // },
                 {
-                  name: "माँ दुर्गा",
+                  title: "English",
                   description:
-                    "The divine mother representing strength, protection and destruction of evil.",
-                  day: "Special puja on Fridays",
-                },
-                {
-                  name: "भगवान शिव",
-                  description:
-                    "The transformer and destroyer, lord of yoga, meditation and arts.",
-                  day: "Special puja on Mondays",
-                },
-                {
-                  name: "श्री हनुमान",
-                  description:
-                    "The embodiment of devotion, strength, and selfless service.",
-                  day: "Special puja on Saturdays",
+                    "Goddess Mahalaxmi is the presiding deity of Kolhapur. She is the consort of Lord Vishnu and is revered as the goddess of wealth, prosperity, and good fortune. The Kolhapur temple is considered one of the eighteen Maha Shakti Peethas in India.",
                 },
               ].map((deity, i) => (
                 <div
@@ -711,7 +333,7 @@ export default function Home() {
                   <div className="absolute bottom-0 right-0 h-1 w-0 bg-gradient-to-l from-amber-400 to-amber-600 transition-all duration-700 group-hover:w-full delay-200"></div>
                   <div className="absolute bottom-0 left-0 h-0 w-1 bg-gradient-to-t from-amber-400 to-amber-600 transition-all duration-700 group-hover:h-full delay-300"></div>
 
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md group-hover:shadow-lg transition-all duration-300">
+                  {/* <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md group-hover:shadow-lg transition-all duration-300">
                     <img
                       src={`/placeholder.svg?height=64&width=64&text=${i + 1}`}
                       alt={`Deity ${i + 1}`}
@@ -719,14 +341,14 @@ export default function Home() {
                       height={48}
                       className="rounded-full"
                     />
-                  </div>
+                  </div> */}
                   <h3 className="mb-2 text-xl font-bold text-amber-900">
-                    {deity.name}
+                    {deity.title}
                   </h3>
                   <p className="mb-3 text-amber-700">{deity.description}</p>
-                  <p className="text-sm font-medium text-amber-600 bg-amber-50 inline-block px-3 py-1 rounded-full">
+                  {/* <p className="text-sm font-medium text-amber-600 bg-amber-50 inline-block px-3 py-1 rounded-full">
                     {deity.day}
-                  </p>
+                  </p> */}
                 </div>
               ))}
             </div>
@@ -760,6 +382,7 @@ export default function Home() {
             </div>
 
             <div className="mt-16 grid gap-8 md:grid-cols-2">
+              {/* Morning Rituals */}
               <div className="rounded-xl border border-amber-200 bg-white/80 backdrop-blur-sm p-6 shadow-lg transition-all hover:shadow-xl">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md">
@@ -773,33 +396,34 @@ export default function Home() {
                 <div className="relative border-l-2 border-amber-300 pl-8 ml-6 space-y-8">
                   {[
                     {
-                      time: "5:00 AM",
-                      ritual: "मंदिर खुलता है (Temple Opens)",
-                      description:
-                        "The temple doors open for early morning devotees",
+                      time: "4:45 AM",
+                      ritual: "मंदिर उघडते",
+                      description: "सकाळी मंदिर दर्शनासाठी खुले होते.",
                     },
                     {
-                      time: "5:30 AM",
-                      ritual: "मंगला आरती",
-                      description:
-                        "The first aarti of the day to awaken the deities",
+                      time: "6:10 AM",
+                      ritual: "काकड आरती",
+                      description: "महालक्ष्मी देवीची पहिली आरती.",
                     },
                     {
-                      time: "7:00 AM",
-                      ritual: "अभिषेकम्",
-                      description:
-                        "Ritual bathing of the deities with sacred substances",
+                      time: "6:30 AM",
+                      ritual: "कापूर आरती",
+                      description: "काकड आरतीनंतर कपूर आरती केली जाते.",
                     },
                     {
                       time: "8:30 AM",
-                      ritual: "श्रृंगार",
-                      description:
-                        "Adorning the deities with fresh clothes and ornaments",
+                      ritual: "देवी स्नान",
+                      description: "देवीला पवित्र जलाने स्नान घालणे.",
                     },
                     {
-                      time: "9:00 AM",
-                      ritual: "अर्चना",
-                      description: "Offering of flowers, fruits and prayers",
+                      time: "9:30 AM",
+                      ritual: "सकाळची आरती",
+                      description: "दिवसाच्या आरंभासाठी विशेष पूजा.",
+                    },
+                    {
+                      time: "11:30 AM",
+                      ritual: "दुहेरी स्नान",
+                      description: "देवीला दुसऱ्यांदा स्नान घालणे.",
                     },
                   ].map((item, i) => (
                     <div key={i} className="relative">
@@ -823,6 +447,7 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Evening Rituals */}
               <div className="rounded-xl border border-amber-200 bg-white/80 backdrop-blur-sm p-6 shadow-lg transition-all hover:shadow-xl">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-amber-400 to-amber-600 shadow-md">
@@ -836,29 +461,30 @@ export default function Home() {
                 <div className="relative border-l-2 border-amber-300 pl-8 ml-6 space-y-8">
                   {[
                     {
-                      time: "12:00 PM",
-                      ritual: "मध्याह्निक पूजा",
-                      description: "Midday worship with special offerings",
+                      time: "12:30 PM",
+                      ritual: "दुपारी आरती",
+                      description: "महालक्ष्मी देवीची मध्यान्ह आरती.",
                     },
                     {
-                      time: "4:00 PM",
-                      ritual: "अपराह्न अर्चना",
-                      description: "Afternoon prayers and offerings",
+                      time: "नित्य",
+                      ritual: "अलंकार पूजा",
+                      description:
+                        "दररोज देवीला दागिने आणि वस्त्राने सजवले जाते.",
                     },
                     {
-                      time: "6:30 PM",
-                      ritual: "संध्या आरती",
-                      description: "Evening aarti with lamps and incense",
+                      time: "8:30 PM",
+                      ritual: "रात्रीची आरती",
+                      description: "दिवसाचा शेवट देवीच्या आरतीने.",
                     },
                     {
-                      time: "8:00 PM",
-                      ritual: "शयन आरती",
-                      description: "Final aarti before the deities retire",
+                      time: "10:10 PM",
+                      ritual: "शेज आरती",
+                      description: "देवीच्या विश्रांतीपूर्वीची अंतिम आरती.",
                     },
                     {
-                      time: "9:00 PM",
-                      ritual: "मंदिर बंद होता है (Temple Closes)",
-                      description: "The temple closes for the night",
+                      time: "Friday 9:30 PM",
+                      ritual: "पालखी सेवा",
+                      description: "प्रत्येक शुक्रवारी देवीची पालखी यात्रा.",
                     },
                   ].map((item, i) => (
                     <div key={i} className="relative">
@@ -887,10 +513,9 @@ export default function Home() {
 
         {/* Upcoming Events with Animated Cards */}
         {/* Events Section */}
-        <section id="events" className="py-20 relative overflow-hidden">
+        {/* <section id="events" className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-amber-100 to-amber-50"></div>
 
-          {/* Animated background patterns */}
           <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] bg-repeat opacity-5"></div>
 
           <div className="container mx-auto max-w-7xl relative z-10 px-4 md:px-6">
@@ -999,13 +624,12 @@ export default function Home() {
               </Button>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Services Section with Animated Icons */}
-        <section id="services" className="py-20 relative overflow-hidden">
+        {/* <section id="services" className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-amber-100"></div>
 
-          {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-0 left-1/3 w-72 h-72 bg-amber-200/30 rounded-full blur-3xl animate-blob animation-delay-1000"></div>
             <div className="absolute bottom-0 right-1/3 w-72 h-72 bg-amber-300/30 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
@@ -1133,7 +757,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Gallery Section with Animated Grid */}
         <section id="gallery" className="py-20 relative overflow-hidden">
@@ -1257,19 +881,18 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="mt-12 flex justify-center">
+            {/* <div className="mt-12 flex justify-center">
               <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white rounded-full px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300">
                 View Full Gallery
               </Button>
-            </div>
+            </div> */}
           </div>
         </section>
 
         {/* Donation Section with Animated Form */}
-        <section id="donate" className="py-20 relative overflow-hidden">
+        {/* <section id="donate" className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-amber-100"></div>
 
-          {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute top-1/4 left-0 w-72 h-72 bg-amber-200/30 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
             <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-amber-300/30 rounded-full blur-3xl animate-blob animation-delay-5000"></div>
@@ -1465,658 +1088,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </div>
   );
 }
-
-// import React, { useState, useEffect, useRef } from "react";
-// import { motion } from "framer-motion";
-
-// const Home = () => {
-//   const [isVisible, setIsVisible] = useState({
-//     hero: false,
-//     timeline: false,
-//     features: false,
-//     gallery: false,
-//   });
-
-//   // Animation variants
-//   const fadeIn = {
-//     hidden: { opacity: 0, y: 20 },
-//     visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-//   };
-
-//   const scaleIn = {
-//     hidden: { opacity: 0, scale: 0.8 },
-//     visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-//   };
-
-//   const staggerChildren = {
-//     hidden: { opacity: 0 },
-//     visible: {
-//       opacity: 1,
-//       transition: {
-//         staggerChildren: 0.3,
-//       },
-//     },
-//   };
-
-//   // Scroll animation observer
-//   useEffect(() => {
-//     const observerOptions = {
-//       threshold: 0.2,
-//       rootMargin: "-50px",
-//     };
-
-//     const observer = new IntersectionObserver((entries) => {
-//       entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
-//         }
-//       });
-//     }, observerOptions);
-
-//     const sections = document.querySelectorAll("section");
-//     sections.forEach((section) => {
-//       observer.observe(section);
-//     });
-
-//     return () => {
-//       sections.forEach((section) => {
-//         observer.unobserve(section);
-//       });
-//     };
-//   }, []);
-
-//   // Testimonials data
-//   const testimonials = [
-//     {
-//       name: "Rajesh Sharma",
-//       location: "Mumbai",
-//       text: "The Abhishek ceremony at Devsthan was a deeply spiritual experience. The priests were knowledgeable and guided us through every ritual with patience.",
-//     },
-//     {
-//       name: "Priya Patel",
-//       location: "Delhi",
-//       text: "Booking the Abhishek service online was so convenient. The ceremony was conducted with utmost devotion and respect for traditions.",
-//     },
-//     {
-//       name: "Amit Verma",
-//       location: "Varanasi",
-//       text: "The attention to detail in every ritual was impressive. Devsthan has preserved our sacred traditions while making them accessible in the digital age.",
-//     },
-//   ];
-
-//   const [activeTestimonial, setActiveTestimonial] = useState(0);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
-//     }, 5000);
-
-//     return () => clearInterval(interval);
-//   }, [testimonials.length]);
-
-//   return (
-//     <div className="font-sans bg-gradient-to-b from-amber-50 to-amber-100">
-//       {/* Hero Section */}
-//       <section id="hero" className="relative overflow-hidden">
-//         <div className="absolute inset-0 bg-amber-500 opacity-10 animate-pulse"></div>
-//         <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.hero ? "visible" : "hidden"}
-//             variants={fadeIn}
-//             className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0"
-//           >
-//             <img
-//               className="object-cover object-center rounded shadow-2xl transform hover:scale-105 transition-transform duration-500"
-//               alt="Temple"
-//               src="/api/placeholder/720/600"
-//             />
-//           </motion.div>
-//           <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-//             <motion.h1
-//               initial="hidden"
-//               animate={isVisible.hero ? "visible" : "hidden"}
-//               variants={fadeIn}
-//               className="title-font sm:text-5xl text-4xl mb-4 font-bold text-orange-800"
-//             >
-//               Devsthan Abhishek
-//               <br className="hidden lg:inline-block" />
-//               <span className="text-yellow-600"> Sacred Ceremonies</span>
-//             </motion.h1>
-//             <motion.p
-//               initial="hidden"
-//               animate={isVisible.hero ? "visible" : "hidden"}
-//               variants={fadeIn}
-//               className="mb-8 leading-relaxed text-gray-700"
-//             >
-//               Experience the divine blessings of traditional Abhishek
-//               ceremonies. Our expert priests perform authentic rituals following
-//               ancient Vedic traditions. Book your spiritual journey today and
-//               connect with the divine through sacred abhishek ceremonies.
-//             </motion.p>
-//             <motion.div
-//               initial="hidden"
-//               animate={isVisible.hero ? "visible" : "hidden"}
-//               variants={staggerChildren}
-//               className="flex justify-center"
-//             >
-//               <motion.button
-//                 variants={scaleIn}
-//                 className="inline-flex text-white bg-orange-600 border-0 py-3 px-8 focus:outline-none hover:bg-orange-700 rounded-lg text-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-//               >
-//                 Book Now
-//               </motion.button>
-//               <motion.button
-//                 variants={scaleIn}
-//                 className="ml-6 inline-flex text-orange-700 bg-amber-200 border-0 py-3 px-8 focus:outline-none hover:bg-amber-300 rounded-lg text-lg shadow-md transition-all duration-300 transform hover:-translate-y-1"
-//               >
-//                 Learn More
-//               </motion.button>
-//             </motion.div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Timeline/Process Section */}
-//       <section id="timeline" className="text-gray-600 body-font">
-//         <div className="container px-5 py-24 mx-auto flex flex-wrap">
-//           <motion.h2
-//             initial="hidden"
-//             animate={isVisible.timeline ? "visible" : "hidden"}
-//             variants={fadeIn}
-//             className="sm:text-4xl text-3xl text-center font-bold text-orange-800 mb-16 w-full"
-//           >
-//             The Abhishek Journey
-//           </motion.h2>
-
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.timeline ? "visible" : "hidden"}
-//             variants={staggerChildren}
-//             className="flex relative pt-10 pb-20 sm:items-center md:w-2/3 mx-auto"
-//           >
-//             <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-//               <div className="h-full w-1 bg-orange-200 pointer-events-none"></div>
-//             </div>
-//             <motion.div
-//               variants={scaleIn}
-//               className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-orange-500 text-white relative z-10 title-font font-medium text-sm"
-//             >
-//               1
-//             </motion.div>
-//             <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-//               <div className="flex-shrink-0 w-24 h-24 bg-amber-100 text-orange-500 rounded-full inline-flex items-center justify-center">
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-12 h-12"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-//                 </svg>
-//               </div>
-//               <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-//                 <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-//                   Booking & Consultation
-//                 </h2>
-//                 <p className="leading-relaxed">
-//                   Begin your spiritual journey by selecting your preferred
-//                   Abhishek package and scheduling a consultation with our
-//                   knowledgeable priests.
-//                 </p>
-//               </div>
-//             </div>
-//           </motion.div>
-
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.timeline ? "visible" : "hidden"}
-//             variants={staggerChildren}
-//             className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto"
-//           >
-//             <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-//               <div className="h-full w-1 bg-orange-200 pointer-events-none"></div>
-//             </div>
-//             <motion.div
-//               variants={scaleIn}
-//               className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-orange-500 text-white relative z-10 title-font font-medium text-sm"
-//             >
-//               2
-//             </motion.div>
-//             <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-//               <div className="flex-shrink-0 w-24 h-24 bg-amber-100 text-orange-500 rounded-full inline-flex items-center justify-center">
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-12 h-12"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-//                 </svg>
-//               </div>
-//               <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-//                 <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-//                   Preparation & Sankalp
-//                 </h2>
-//                 <p className="leading-relaxed">
-//                   We help you prepare the necessary offerings and guide you
-//                   through the spiritual intention (sankalp) setting process for
-//                   the ceremony.
-//                 </p>
-//               </div>
-//             </div>
-//           </motion.div>
-
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.timeline ? "visible" : "hidden"}
-//             variants={staggerChildren}
-//             className="flex relative pb-20 sm:items-center md:w-2/3 mx-auto"
-//           >
-//             <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-//               <div className="h-full w-1 bg-orange-200 pointer-events-none"></div>
-//             </div>
-//             <motion.div
-//               variants={scaleIn}
-//               className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-orange-500 text-white relative z-10 title-font font-medium text-sm"
-//             >
-//               3
-//             </motion.div>
-//             <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-//               <div className="flex-shrink-0 w-24 h-24 bg-amber-100 text-orange-500 rounded-full inline-flex items-center justify-center">
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-12 h-12"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <circle cx="12" cy="5" r="3"></circle>
-//                   <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-//                 </svg>
-//               </div>
-//               <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-//                 <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-//                   Sacred Ceremony
-//                 </h2>
-//                 <p className="leading-relaxed">
-//                   Experience the divine Abhishek ceremony with authentic
-//                   mantras, sacred waters, milk, honey, and other traditional
-//                   offerings to the deity.
-//                 </p>
-//               </div>
-//             </div>
-//           </motion.div>
-
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.timeline ? "visible" : "hidden"}
-//             variants={staggerChildren}
-//             className="flex relative pb-10 sm:items-center md:w-2/3 mx-auto"
-//           >
-//             <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
-//               <div className="h-full w-1 bg-orange-200 pointer-events-none"></div>
-//             </div>
-//             <motion.div
-//               variants={scaleIn}
-//               className="flex-shrink-0 w-6 h-6 rounded-full mt-10 sm:mt-0 inline-flex items-center justify-center bg-orange-500 text-white relative z-10 title-font font-medium text-sm"
-//             >
-//               4
-//             </motion.div>
-//             <div className="flex-grow md:pl-8 pl-6 flex sm:items-center items-start flex-col sm:flex-row">
-//               <div className="flex-shrink-0 w-24 h-24 bg-amber-100 text-orange-500 rounded-full inline-flex items-center justify-center">
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-12 h-12"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-//                   <circle cx="12" cy="7" r="4"></circle>
-//                 </svg>
-//               </div>
-//               <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
-//                 <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-//                   Divine Blessings
-//                 </h2>
-//                 <p className="leading-relaxed">
-//                   Receive the divine blessings, prasad, and guidance from our
-//                   priests for continued spiritual practice and growth.
-//                 </p>
-//               </div>
-//             </div>
-//           </motion.div>
-//         </div>
-//       </section>
-
-//       {/* Features Section */}
-//       <section id="features" className="text-gray-600 body-font">
-//         <div className="container px-5 py-24 mx-auto flex flex-wrap">
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.features ? "visible" : "hidden"}
-//             variants={fadeIn}
-//             className="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden"
-//           >
-//             <img
-//               alt="Abhishek ceremony"
-//               className="object-cover object-center h-full w-full rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl"
-//               src="/api/placeholder/460/500"
-//             />
-//           </motion.div>
-//           <div className="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
-//             <motion.h2
-//               initial="hidden"
-//               animate={isVisible.features ? "visible" : "hidden"}
-//               variants={fadeIn}
-//               className="text-3xl font-bold text-orange-800 mb-8"
-//             >
-//               Our Sacred Offerings
-//             </motion.h2>
-
-//             <motion.div
-//               initial="hidden"
-//               animate={isVisible.features ? "visible" : "hidden"}
-//               variants={staggerChildren}
-//               className="flex flex-col mb-10 lg:items-start items-center"
-//             >
-//               <motion.div
-//                 variants={scaleIn}
-//                 className="w-16 h-16 inline-flex items-center justify-center rounded-full bg-amber-100 text-orange-500 mb-5 shadow-md"
-//               >
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-8 h-8"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-//                 </svg>
-//               </motion.div>
-//               <div className="flex-grow">
-//                 <h2 className="text-gray-900 text-xl title-font font-medium mb-3">
-//                   Rudra Abhishek
-//                 </h2>
-//                 <p className="leading-relaxed text-base">
-//                   Honor Lord Shiva with this powerful ceremony that cleanses
-//                   negative energies and brings peace, prosperity, and spiritual
-//                   growth.
-//                 </p>
-//                 <a className="mt-3 text-orange-500 inline-flex items-center hover:text-orange-600 transition-colors duration-300">
-//                   Learn More
-//                   <svg
-//                     fill="none"
-//                     stroke="currentColor"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth="2"
-//                     className="w-4 h-4 ml-2"
-//                     viewBox="0 0 24 24"
-//                   >
-//                     <path d="M5 12h14M12 5l7 7-7 7"></path>
-//                   </svg>
-//                 </a>
-//               </div>
-//             </motion.div>
-
-//             <motion.div
-//               initial="hidden"
-//               animate={isVisible.features ? "visible" : "hidden"}
-//               variants={staggerChildren}
-//               className="flex flex-col mb-10 lg:items-start items-center"
-//             >
-//               <motion.div
-//                 variants={scaleIn}
-//                 className="w-16 h-16 inline-flex items-center justify-center rounded-full bg-amber-100 text-orange-500 mb-5 shadow-md"
-//               >
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-8 h-8"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <circle cx="6" cy="6" r="3"></circle>
-//                   <circle cx="6" cy="18" r="3"></circle>
-//                   <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
-//                 </svg>
-//               </motion.div>
-//               <div className="flex-grow">
-//                 <h2 className="text-gray-900 text-xl title-font font-medium mb-3">
-//                   Ganesh Abhishek
-//                 </h2>
-//                 <p className="leading-relaxed text-base">
-//                   Invoke the blessings of Lord Ganesha to remove obstacles and
-//                   bring auspicious beginnings to your endeavors and life
-//                   journey.
-//                 </p>
-//                 <a className="mt-3 text-orange-500 inline-flex items-center hover:text-orange-600 transition-colors duration-300">
-//                   Learn More
-//                   <svg
-//                     fill="none"
-//                     stroke="currentColor"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth="2"
-//                     className="w-4 h-4 ml-2"
-//                     viewBox="0 0 24 24"
-//                   >
-//                     <path d="M5 12h14M12 5l7 7-7 7"></path>
-//                   </svg>
-//                 </a>
-//               </div>
-//             </motion.div>
-
-//             <motion.div
-//               initial="hidden"
-//               animate={isVisible.features ? "visible" : "hidden"}
-//               variants={staggerChildren}
-//               className="flex flex-col mb-10 lg:items-start items-center"
-//             >
-//               <motion.div
-//                 variants={scaleIn}
-//                 className="w-16 h-16 inline-flex items-center justify-center rounded-full bg-amber-100 text-orange-500 mb-5 shadow-md"
-//               >
-//                 <svg
-//                   fill="none"
-//                   stroke="currentColor"
-//                   strokeLinecap="round"
-//                   strokeLinejoin="round"
-//                   strokeWidth="2"
-//                   className="w-8 h-8"
-//                   viewBox="0 0 24 24"
-//                 >
-//                   <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-//                   <circle cx="12" cy="7" r="4"></circle>
-//                 </svg>
-//               </motion.div>
-//               <div className="flex-grow">
-//                 <h2 className="text-gray-900 text-xl title-font font-medium mb-3">
-//                   Lakshmi Abhishek
-//                 </h2>
-//                 <p className="leading-relaxed text-base">
-//                   Honor the goddess of wealth and prosperity with this divine
-//                   ceremony to invite abundance, success, and harmony into your
-//                   life.
-//                 </p>
-//                 <a className="mt-3 text-orange-500 inline-flex items-center hover:text-orange-600 transition-colors duration-300">
-//                   Learn More
-//                   <svg
-//                     fill="none"
-//                     stroke="currentColor"
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth="2"
-//                     className="w-4 h-4 ml-2"
-//                     viewBox="0 0 24 24"
-//                   >
-//                     <path d="M5 12h14M12 5l7 7-7 7"></path>
-//                   </svg>
-//                 </a>
-//               </div>
-//             </motion.div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Testimonials Section */}
-//       <section className="text-gray-600 body-font bg-orange-50">
-//         <div className="container px-5 py-24 mx-auto">
-//           <h2 className="text-3xl font-bold text-orange-800 mb-12 text-center">
-//             Devotee Experiences
-//           </h2>
-//           <div className="relative w-full max-w-3xl mx-auto h-64">
-//             {testimonials.map((testimonial, index) => (
-//               <motion.div
-//                 key={index}
-//                 initial={{ opacity: 0, x: 100 }}
-//                 animate={{
-//                   opacity: index === activeTestimonial ? 1 : 0,
-//                   x: index === activeTestimonial ? 0 : 100,
-//                 }}
-//                 transition={{ duration: 0.5 }}
-//                 className="absolute inset-0 bg-white p-8 rounded-lg shadow-lg"
-//                 style={{
-//                   display: index === activeTestimonial ? "block" : "none",
-//                 }}
-//               >
-//                 <svg
-//                   className="w-12 h-12 text-amber-200 mb-4"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   fill="currentColor"
-//                   viewBox="0 0 975.036 975.036"
-//                 >
-//                   <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
-//                 </svg>
-//                 <p className="leading-relaxed mb-6 italic">
-//                   {testimonial.text}
-//                 </p>
-//                 <div className="inline-flex items-center">
-//                   <div className="w-12 h-12 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center text-orange-500 text-xl font-bold">
-//                     {testimonial.name.charAt(0)}
-//                   </div>
-//                   <div className="flex-grow flex flex-col pl-4">
-//                     <span className="title-font font-medium text-gray-900">
-//                       {testimonial.name}
-//                     </span>
-//                     <span className="text-gray-500 text-sm">
-//                       {testimonial.location}
-//                     </span>
-//                   </div>
-//                 </div>
-//               </motion.div>
-//             ))}
-//             <div className="absolute -bottom-12 left-0 right-0 flex justify-center space-x-2">
-//               {testimonials.map((_, index) => (
-//                 <button
-//                   key={index}
-//                   onClick={() => setActiveTestimonial(index)}
-//                   className={`w-3 h-3 rounded-full ${
-//                     index === activeTestimonial
-//                       ? "bg-orange-500"
-//                       : "bg-orange-200"
-//                   } transition-colors duration-300`}
-//                 ></button>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-
-//       {/* Gallery Section */}
-//       <section id="gallery" className="text-gray-400 bg-orange-900 body-font">
-//         <div className="container px-5 py-24 mx-auto flex flex-wrap">
-//           <div className="flex w-full mb-20 flex-wrap">
-//             <motion.h1
-//               initial="hidden"
-//               animate={isVisible.gallery ? "visible" : "hidden"}
-//               variants={fadeIn}
-//               className="sm:text-4xl text-3xl font-bold title-font text-white lg:w-1/3 lg:mb-0 mb-4"
-//             >
-//               Sacred Glimpses
-//             </motion.h1>
-//             <motion.p
-//               initial="hidden"
-//               animate={isVisible.gallery ? "visible" : "hidden"}
-//               variants={fadeIn}
-//               className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base text-amber-100"
-//             >
-//               Experience the divine moments captured during our Abhishek
-//               ceremonies. Each ritual is performed with utmost devotion and
-//               authenticity, preserving the ancient traditions while making them
-//               accessible to all devotees.
-//             </motion.p>
-//           </div>
-//           <motion.div
-//             initial="hidden"
-//             animate={isVisible.gallery ? "visible" : "hidden"}
-//             variants={staggerChildren}
-//             className="flex flex-wrap md:-m-2 -m-1"
-//           >
-//             <div className="flex flex-wrap w-1/2">
-//               <motion.div variants={scaleIn} className="md:p-2 p-1 w-1/2">
-//                 <img
-//                   alt="gallery"
-//                   className="w-full object-cover h-full object-center block rounded-lg hover:opacity-90 transition-opacity duration-300"
-//                   src="/api/placeholder/500/300"
-//                 />
-//               </motion.div>
-//               <motion.div variants={scaleIn} className="md:p-2 p-1 w-1/2">
-//                 <img
-//                   alt="gallery"
-//                   className="w-full object-cover h-full object-center block rounded-lg hover:opacity-90 transition-opacity duration-300"
-//                   src="/api/placeholder/501/301"
-//                 />
-//               </motion.div>
-//               <motion.div variants={scaleIn} className="md:p-2 p-1 w-full">
-//                 <img
-//                   alt="gallery"
-//                   className="w-full h-full object-cover object-center block rounded-lg hover:opacity-90 transition-opacity duration-300"
-//                   src="/api/placeholder/600/360"
-//                 />
-//               </motion.div>
-//             </div>
-//             <div className="flex flex-wrap w-1/2">
-//               <motion.div variants={scaleIn} className="md:p-2 p-1 w-full">
-//                 <img
-//                   alt="gallery"
-//                   className="w-full h-full object-cover object-center block rounded-lg hover:opacity-90 transition-opacity duration-300"
-//                   src="/api/placeholder/601/361"
-//                 />
-//               </motion.div>
-//               <motion.div variants={scaleIn} className="md:p-2 p-1 w-1/2">
-//                 <img
-//                   alt="gallery"
-//                   className="w-full object-cover h-full object-center block rounded-lg hover:opacity-90 transition-opacity duration-300"
-//                   src="/api/placeholder/502/302"
-//                 />
-//               </motion.div>
-//             </div>
-//           </motion.div>
-//         </div>
-//       </section>
-//     </div>
-//   );
-// };
-//  export default Home;
