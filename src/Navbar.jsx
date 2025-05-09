@@ -44,7 +44,7 @@ export default function Navbar() {
         <Link to="/" prefetch="false" className="flex items-center">
           {/* <TempleIcon className="h-6 w-6 mr-2 text-amber-300" /> */}
           <img
-            src="https://thumbs.dreamstime.com/z/shree-mahalaxmi-famous-godess-kolhapur-india-189933259.jpg"
+            src="./logo.png"
             className="w-12 h-12 rounded-full object-cover border-2 border-amber-500"
             alt="Temple Logo"
           />

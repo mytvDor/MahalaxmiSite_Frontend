@@ -901,9 +901,9 @@ export default function AbhishekBooking() {
   today.setHours(0, 0, 0, 0);
 
   const timeSlots = [
-    { value: "05:00", label: "5:00 AM - Mangala Aarti" },
-    { value: "07:00", label: "7:00 AM - Morning Abhishek" },
-    { value: "10:00", label: "10:00 AM - Shringar Darshan" },
+    { value: "05:00", label: "5:00 AM " },
+    { value: "07:00", label: "7:00 AM " },
+    { value: "09:30", label: "9:30 AM " },
   ];
 
   const validatePhone = (phoneNumber) => {
@@ -1058,7 +1058,7 @@ export default function AbhishekBooking() {
                 />
               </div>
 
-              <div className="space-y-2">
+              {/* <div className="space-y-2">
                 <Label className="text-yellow-800 font-medium flex items-center gap-2">
                   <CalendarIcon className="h-4 w-4" /> Select Date
                 </Label>
@@ -1069,6 +1069,34 @@ export default function AbhishekBooking() {
                     onSelect={setDate}
                     disabled={(date) => date < today}
                     className="rounded-md"
+                  />
+                </div>
+              </div> */}
+              <div className="space-y-2">
+                <label className="text-yellow-800 font-medium flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 4h10M5 11h14M5 15h14M5 19h14"
+                    />
+                  </svg>
+                  Select Date
+                </label>
+                <div className="border border-yellow-200 rounded-lg p-3 bg-amber-50/50">
+                  <input
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                    min={today.toISOString().split("T")[0]}
+                    className="w-full px-3 py-2 border rounded-md"
                   />
                 </div>
               </div>
@@ -1105,9 +1133,10 @@ export default function AbhishekBooking() {
                   <CreditCard className="h-4 w-4" /> Scan and Pay
                 </Label>
                 <div className="mt-2 bg-white p-3 border border-yellow-200 rounded-lg flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs font-medium px-2.5 py-0.5 rounded-full mb-2">
-                    Abhishek Fee: ₹501
+                  <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xl font-medium px-2.5 py-0.5 rounded-full mb-2">
+                    Abhishek Fee: ₹1001
                   </div>
+
                   <div className="relative w-48 h-48 p-2 bg-white rounded-lg shadow-sm border border-yellow-100">
                     <img
                       src="/placeholder.svg?height=180&width=180"
@@ -1117,6 +1146,9 @@ export default function AbhishekBooking() {
                       className="object-contain"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-transparent to-yellow-400/20 animate-pulse"></div>
+                  </div>
+                  <div className="mt-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-md font-medium px-2.5 py-0.5 rounded-full mb-2">
+                    Contact No. +91 9130340304 +91 8956594343
                   </div>
                 </div>
               </div>

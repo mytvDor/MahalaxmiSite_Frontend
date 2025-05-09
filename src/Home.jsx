@@ -23,8 +23,8 @@ import { useState, useEffect } from "react";
 // import { Sun, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 // import { Link } from "react-router-dom";
 const templeImages = [
-  "https://th.bing.com/th/id/OIP.UaXUXxX7dFV8cc5o2w9GsQHaJQ?w=208&h=260&c=7&r=0&o=5&dpr=1.3&pid=1.7", // Replace with actual temple images
-  "https://wallpaperaccess.com/full/9259061.jpg",
+  "./Bgimg1.png", // Replace with actual temple images
+  "./bgimg2.png",
 ];
 
 export default function Home() {
@@ -259,7 +259,7 @@ export default function Home() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-amber-400 to-amber-600 rounded-2xl blur opacity-30 animate-pulse-slow"></div>
                 <div className="relative h-[500px] overflow-hidden rounded-xl shadow-2xl">
                   <img
-                    src="https://th.bing.com/th/id/OIP.cu-KNxFIw5oqM9QvzZF05AAAAA?rs=1&pid=ImgDetMain"
+                    src="./galP2.png"
                     alt="Temple Interior"
                     className="object-cover w-full h-full"
                   />
@@ -783,26 +783,26 @@ export default function Home() {
               <div className="grid gap-4">
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-80 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=320&width=240&text=Temple+Exterior"
+                    src="./galP1.png"
                     alt="Temple Exterior"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">
+                    {/* <p className="p-4 text-white font-medium">
                       Temple Exterior
-                    </p>
+                    </p> */}
                   </div>
                 </div>
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-40 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=160&width=240&text=Diwali+Celebration"
+                    src="./gall1.png"
                     alt="Diwali Celebration"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">
+                    {/* <p className="p-4 text-white font-medium">
                       Diwali Celebration
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
@@ -810,22 +810,22 @@ export default function Home() {
               <div className="grid gap-4">
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-40 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=160&width=240&text=Ganesh+Idol"
+                    src="./gall2.png"
                     alt="Ganesh Idol"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">Ganesh Idol</p>
+                    {/* <p className="p-4 text-white font-medium">Ganesh Idol</p> */}
                   </div>
                 </div>
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-80 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=320&width=240&text=Holi+Festival"
+                    src="./galP2.png"
                     alt="Holi Festival"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">Holi Festival</p>
+                    {/* <p className="p-4 text-white font-medium">Holi Festival</p> */}
                   </div>
                 </div>
               </div>
@@ -833,22 +833,22 @@ export default function Home() {
               <div className="grid gap-4">
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-80 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=320&width=240&text=Aarti+Ceremony"
+                    src="./galP3.png"
                     alt="Aarti Ceremony"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">Aarti Ceremony</p>
+                    {/* <p className="p-4 text-white font-medium">Aarti Ceremony</p> */}
                   </div>
                 </div>
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-40 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=160&width=240&text=Cultural+Dance"
+                    src="./gall3.png"
                     alt="Cultural Dance"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">Cultural Dance</p>
+                    {/* <p className="p-4 text-white font-medium">Cultural Dance</p> */}
                   </div>
                 </div>
               </div>
@@ -856,26 +856,26 @@ export default function Home() {
               <div className="grid gap-4">
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-40 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=160&width=240&text=Temple+Interior"
+                    src="./gall4.png"
                     alt="Temple Interior"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">
+                    {/* <p className="p-4 text-white font-medium">
                       Temple Interior
-                    </p>
+                    </p> */}
                   </div>
                 </div>
                 <div className="group relative overflow-hidden rounded-xl shadow-md h-40 md:h-80 transition-transform hover:scale-[1.02]">
                   <img
-                    src="/placeholder.svg?height=320&width=240&text=Navratri+Celebration"
+                    src="./galP4.png"
                     alt="Navratri Celebration"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-amber-900/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <p className="p-4 text-white font-medium">
+                    {/* <p className="p-4 text-white font-medium">
                       Navratri Celebration
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
