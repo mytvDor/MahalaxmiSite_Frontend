@@ -1012,17 +1012,6 @@ export default function AbhishekBooking() {
                 </Alert>
               )}
 
-              {success && (
-                <Alert className="border-green-300 bg-green-50 text-green-800">
-                  <AlertDescription className="flex items-center">
-                    <span className="bg-green-100 p-1 rounded-full mr-2">
-                      ✓
-                    </span>
-                    Your Abhishek has been successfully booked!
-                  </AlertDescription>
-                </Alert>
-              )}
-
               <div className="space-y-2">
                 <Label
                   htmlFor="name"
@@ -1097,6 +1086,7 @@ export default function AbhishekBooking() {
                     onChange={(e) => setDate(e.target.value)}
                     min={today.toISOString().split("T")[0]}
                     className="w-full px-3 py-2 border rounded-md"
+                    required
                   />
                 </div>
               </div>
@@ -1139,7 +1129,7 @@ export default function AbhishekBooking() {
 
                   <div className="relative w-48 h-48 p-2 bg-white rounded-lg shadow-sm border border-yellow-100">
                     <img
-                      src="/placeholder.svg?height=180&width=180"
+                      src="/qr.png"
                       alt="QR Code for Payment"
                       width={180}
                       height={180}
@@ -1170,8 +1160,20 @@ export default function AbhishekBooking() {
                 />
               </div>
             </CardContent>
-
-            <CardFooter className="p-6">
+            <div className="p-6">
+              {" "}
+              {success && (
+                <Alert className="border-green-300 bg-green-50 text-green-800">
+                  <AlertDescription className="flex items-center">
+                    <span className="bg-green-100 p-1 rounded-full mr-2">
+                      ✓
+                    </span>
+                    Your Abhishek has been successfully booked!
+                  </AlertDescription>
+                </Alert>
+              )}
+            </div>
+            <CardFooter className="pl-6 pr-6">
               <Button
                 type="submit"
                 disabled={loading}
