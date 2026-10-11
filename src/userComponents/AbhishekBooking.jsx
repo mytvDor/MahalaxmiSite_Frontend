@@ -19,23 +19,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import {
   Bell,
-  Clock,
-  User,
-  Phone,
-  CreditCard,
   CalendarDays,
+  CheckCircle2,
+  Clock,
+  CreditCard,
   Image as ImageIcon,
-  X,
   Info,
+  LoaderCircle,
+  Phone,
+  RotateCcw,
+  User,
+  X,
   ZoomIn,
   ZoomOut,
-  RotateCcw,
 } from "lucide-react";
 
 const API_URL = "https://mahalaxmisite-backend.onrender.com";
+const REQUEST_TIMEOUT = 180000; // Allow up to 3 minutes for a sleeping free-tier server to wake up.
 
 const TIME_SLOTS = [
   { value: "05:00", label: "5:00 AM" },
@@ -48,16 +50,13 @@ const getLocalDateString = () => {
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
-
   return `${year}-${month}-${day}`;
 };
 
 const isValidDate = (value) => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
-
   const [year, month, day] = value.split("-").map(Number);
   const parsed = new Date(year, month - 1, day);
-
   return (
     parsed.getFullYear() === year &&
     parsed.getMonth() === month - 1 &&
@@ -68,7 +67,6 @@ const isValidDate = (value) => {
 const getSlotDateTime = (selectedDate, selectedTime) => {
   const [year, month, day] = selectedDate.split("-").map(Number);
   const [hours, minutes] = selectedTime.split(":").map(Number);
-
   return new Date(year, month - 1, day, hours, minutes, 0, 0);
 };
 
@@ -84,15 +82,31 @@ export default function AbhishekBooking() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [toast, setToast] = useState(null);
   const [validationErrors, setValidationErrors] = useState({});
-
   const [showTransactionPreview, setShowTransactionPreview] = useState(false);
   const [zoom, setZoom] = useState(1);
 
+  // A ref locks submission immediately, before React can re-render the button.
+  const submissionLock = useRef(false);
+  const fieldRefs = useRef({});
+  const toastTimer = useRef(null);
   const pinchStartDistance = useRef(null);
   const pinchStartZoom = useRef(1);
 
   const todayString = getLocalDateString();
+
+  const showToast = (type, message) => {
+    setToast({ type, message });
+    if (toastTimer.current) window.clearTimeout(toastTimer.current);
+    toastTimer.current = window.setTimeout(() => setToast(null), 6000);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (toastTimer.current) window.clearTimeout(toastTimer.current);
+    };
+  }, []);
 
   const openTransactionPreview = () => {
     setZoom(1);
@@ -111,26 +125,18 @@ export default function AbhishekBooking() {
 
   const resetZoom = () => setZoom(1);
 
-  // Escape closes the viewer; background scrolling stays disabled.
   useEffect(() => {
-    if (!showTransactionPreview) return;
+    if (!showTransactionPreview) return undefined;
 
     const handleKeyDown = (event) => {
-      if (event.key === "Escape") {
-        closeTransactionPreview();
-      }
-
+      if (event.key === "Escape") closeTransactionPreview();
       if (event.key === "+" || event.key === "=") {
         setZoom((previous) => clampZoom(previous + 0.25));
       }
-
       if (event.key === "-") {
         setZoom((previous) => clampZoom(previous - 0.25));
       }
-
-      if (event.key === "0") {
-        setZoom(1);
-      }
+      if (event.key === "0") setZoom(1);
     };
 
     const previousOverflow = document.body.style.overflow;
@@ -150,10 +156,8 @@ export default function AbhishekBooking() {
 
   const getTouchDistance = (touches) => {
     if (touches.length < 2) return 0;
-
     const dx = touches[0].clientX - touches[1].clientX;
     const dy = touches[0].clientY - touches[1].clientY;
-
     return Math.sqrt(dx * dx + dy * dy);
   };
 
@@ -166,12 +170,9 @@ export default function AbhishekBooking() {
 
   const handleTouchMove = (event) => {
     if (event.touches.length !== 2 || !pinchStartDistance.current) return;
-
     event.preventDefault();
-
     const currentDistance = getTouchDistance(event.touches);
     const ratio = currentDistance / pinchStartDistance.current;
-
     setZoom(clampZoom(pinchStartZoom.current * ratio));
   };
 
@@ -181,7 +182,6 @@ export default function AbhishekBooking() {
 
   const isPastTimeSlot = (slotValue) => {
     if (!date || date !== getLocalDateString()) return false;
-
     return getSlotDateTime(date, slotValue).getTime() <= Date.now();
   };
 
@@ -189,11 +189,7 @@ export default function AbhishekBooking() {
     setter(value);
     setError("");
     setSuccess(false);
-
-    setValidationErrors((previous) => ({
-      ...previous,
-      [field]: "",
-    }));
+    setValidationErrors((previous) => ({ ...previous, [field]: "" }));
   };
 
   const handleDateChange = (value) => {
@@ -201,12 +197,19 @@ export default function AbhishekBooking() {
     setTime("");
     setError("");
     setSuccess(false);
+    setValidationErrors((previous) => ({ ...previous, date: "", time: "" }));
+  };
 
-    setValidationErrors((previous) => ({
-      ...previous,
-      date: "",
-      time: "",
-    }));
+  const scrollToField = (field) => {
+    // Wait for React to render validation messages before scrolling/focusing.
+    window.requestAnimationFrame(() => {
+      const element = fieldRefs.current[field];
+      if (!element) return;
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+      if (typeof element.focus === "function") {
+        window.setTimeout(() => element.focus({ preventScroll: true }), 350);
+      }
+    });
   };
 
   const validateForm = () => {
@@ -219,15 +222,12 @@ export default function AbhishekBooking() {
       errors.name = "Full name is required.";
     } else if (cleanName.length < 3 || cleanName.length > 80) {
       errors.name = "Name must be between 3 and 80 characters.";
-    } else if (
-      !/^[\p{L}\p{M}]+(?:[ '\u2019-][\p{L}\p{M}]+)*$/u.test(cleanName)
-    ) {
+    } else if (!/^[\p{L}\p{M}]+(?:[ '\u2019-][\p{L}\p{M}]+)*$/u.test(cleanName)) {
       errors.name = "Enter a valid name using letters and spaces.";
     }
 
     if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-      errors.phone =
-        "Enter a valid 10-digit Indian mobile number starting with 6–9.";
+      errors.phone = "Enter a valid 10-digit Indian mobile number starting with 6–9.";
     }
 
     if (!date) {
@@ -239,7 +239,6 @@ export default function AbhishekBooking() {
     }
 
     const selectedSlot = TIME_SLOTS.find((slot) => slot.value === time);
-
     if (!time) {
       errors.time = "Please select an Abhishek time.";
     } else if (!selectedSlot) {
@@ -256,44 +255,59 @@ export default function AbhishekBooking() {
     if (!cleanTransactionId) {
       errors.transactionId = "Transaction ID is required.";
     } else if (!/^[A-Za-z0-9-]{8,35}$/.test(cleanTransactionId)) {
-      errors.transactionId =
-        "Enter 8–35 letters, numbers, or hyphens as shown in your payment app.";
+      errors.transactionId = "Enter 8–35 letters, numbers, or hyphens as shown in your payment app.";
     }
 
     setValidationErrors(errors);
-    return Object.keys(errors).length === 0;
+    return errors;
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Prevent rapid double clicks / Enter key submissions.
+    if (submissionLock.current) return;
     setError("");
     setSuccess(false);
+    setToast(null);
 
-    if (!validateForm()) return;
+    const errors = validateForm();
+    const invalidFields = ["name", "phone", "date", "time", "transactionId"];
+    const firstInvalidField = invalidFields.find((field) => errors[field]);
 
+    if (firstInvalidField) {
+      showToast("error", errors[firstInvalidField]);
+      scrollToField(firstInvalidField);
+      return;
+    }
+
+    submissionLock.current = true;
     setLoading(true);
 
     try {
       const selectedDateTime = getSlotDateTime(date, time);
-
       if (selectedDateTime.getTime() <= Date.now()) {
-        setValidationErrors((previous) => ({
-          ...previous,
-          time: "This time has passed. Please select another slot.",
-        }));
+        const message = "This time has passed. Please select another slot.";
+        setValidationErrors((previous) => ({ ...previous, time: message }));
+        showToast("error", message);
+        scrollToField("time");
         return;
       }
 
-      const response = await axios.post(`${API_URL}/bookings`, {
-        name: name.trim(),
-        phone: phone.trim(),
-        bookingDateTime: selectedDateTime.toISOString(),
-        transactionId: transactionId.trim(),
-      });
+      const response = await axios.post(
+        `${API_URL}/bookings`,
+        {
+          name: name.trim(),
+          phone: phone.trim(),
+          bookingDateTime: selectedDateTime.toISOString(),
+          transactionId: transactionId.trim(),
+        },
+        { timeout: REQUEST_TIMEOUT },
+      );
 
       console.log("Booking submitted:", response.data);
-
       setSuccess(true);
+      showToast("success", "Booking submitted successfully! Please wait for confirmation.");
       setName("");
       setPhone("");
       setDate("");
@@ -302,13 +316,16 @@ export default function AbhishekBooking() {
       setValidationErrors({});
     } catch (err) {
       console.error("Booking error:", err);
-
-      setError(
-        err.response?.data?.error ||
-          err.response?.data?.message ||
-          "Failed to book your appointment. Please try again.",
-      );
+      const message =
+        err.code === "ECONNABORTED"
+          ? "The server took too long to respond. Please check your booking status before trying again."
+          : err.response?.data?.error ||
+            err.response?.data?.message ||
+            "Unable to submit your booking. Please try again.";
+      setError(message);
+      showToast("error", message);
     } finally {
+      submissionLock.current = false;
       setLoading(false);
     }
   };
@@ -339,17 +356,9 @@ export default function AbhishekBooking() {
             <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white p-5 sm:p-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mt-10 -mr-10" />
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -mb-10 -ml-10" />
-
               <Bell className="h-8 w-8 mb-2 relative" />
-
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight relative">
-                Shree Devasthan
-              </h1>
-
-              <CardTitle className="text-xl sm:text-2xl mt-2 font-bold relative">
-                Abhishek Booking
-              </CardTitle>
-
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight relative">Shree Devasthan</h1>
+              <CardTitle className="text-xl sm:text-2xl mt-2 font-bold relative">Abhishek Booking</CardTitle>
               <CardDescription className="text-white/90 mt-1 relative">
                 Offer your devotion at the feet of the Lord
               </CardDescription>
@@ -358,178 +367,133 @@ export default function AbhishekBooking() {
             <form onSubmit={handleSubmit} noValidate>
               <CardContent className="space-y-5 pt-6">
                 {error && (
-                  <Alert
-                    variant="destructive"
-                    className="border-red-300 bg-red-50 text-red-800"
-                  >
+                  <Alert variant="destructive" className="border-red-300 bg-red-50 text-red-800">
                     <AlertDescription>{error}</AlertDescription>
                   </Alert>
                 )}
 
-                <div className="space-y-2">
-                  <Label
-                    htmlFor="name"
-                    className="text-yellow-800 font-medium flex items-center gap-2"
-                  >
-                    <User className="h-4 w-4" />
-                    Full Name
-                  </Label>
+                {loading && (
+                  <Alert className="border-amber-300 bg-amber-50 text-amber-900">
+                    <AlertDescription className="flex items-start gap-3">
+                      <LoaderCircle className="mt-0.5 h-5 w-5 shrink-0 animate-spin" />
+                      <span>
+                        <strong className="block">Submitting your booking…</strong>
+                        This may take 2–3 minutes while the server responds. Please do not click
+                        Submit again or refresh/close this page. Keep this page open until you see
+                        the result.
+                      </span>
+                    </AlertDescription>
+                  </Alert>
+                )}
 
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-yellow-800 font-medium flex items-center gap-2">
+                    <User className="h-4 w-4" /> Full Name
+                  </Label>
                   <Input
+                    ref={(node) => { fieldRefs.current.name = node; }}
                     id="name"
                     autoComplete="name"
                     value={name}
-                    onChange={(e) =>
-                      updateField("name", e.target.value, setName)
-                    }
+                    onChange={(e) => updateField("name", e.target.value, setName)}
                     placeholder="Enter your full name"
                     maxLength={80}
                     aria-invalid={Boolean(validationErrors.name)}
+                    disabled={loading}
                     className="border-yellow-200 focus:border-yellow-500 focus:ring-yellow-500"
                   />
-
                   {fieldError("name")}
                 </div>
 
                 <div className="space-y-2">
-                  <Label
-                    htmlFor="phone"
-                    className="text-yellow-800 font-medium flex items-center gap-2"
-                  >
-                    <Phone className="h-4 w-4" />
-                    Phone Number
+                  <Label htmlFor="phone" className="text-yellow-800 font-medium flex items-center gap-2">
+                    <Phone className="h-4 w-4" /> Phone Number
                   </Label>
-
                   <Input
+                    ref={(node) => { fieldRefs.current.phone = node; }}
                     id="phone"
                     type="tel"
                     inputMode="numeric"
                     autoComplete="tel-national"
                     value={phone}
-                    onChange={(e) =>
-                      updateField(
-                        "phone",
-                        e.target.value.replace(/\D/g, "").slice(0, 10),
-                        setPhone,
-                      )
-                    }
+                    onChange={(e) => updateField("phone", e.target.value.replace(/\D/g, "").slice(0, 10), setPhone)}
                     placeholder="Enter your 10-digit phone number"
                     maxLength={10}
                     aria-invalid={Boolean(validationErrors.phone)}
+                    disabled={loading}
                     className="border-yellow-200 focus:border-yellow-500 focus:ring-yellow-500"
                   />
-
                   {fieldError("phone")}
                 </div>
 
                 <div className="space-y-2">
-                  <Label
-                    htmlFor="date"
-                    className="text-yellow-800 font-medium flex items-center gap-2"
-                  >
-                    <CalendarDays className="h-4 w-4" />
-                    Select Date
+                  <Label htmlFor="date" className="text-yellow-800 font-medium flex items-center gap-2">
+                    <CalendarDays className="h-4 w-4" /> Select Date
                   </Label>
-
                   <div className="border border-yellow-200 rounded-lg p-3 bg-amber-50/50">
                     <input
+                      ref={(node) => { fieldRefs.current.date = node; }}
                       id="date"
                       type="date"
                       value={date}
                       onChange={(e) => handleDateChange(e.target.value)}
                       min={todayString}
                       aria-invalid={Boolean(validationErrors.date)}
+                      disabled={loading}
                       className="w-full min-w-0 px-3 py-2 border border-yellow-200 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     />
                   </div>
-
                   {fieldError("date")}
                 </div>
 
                 <div className="space-y-2">
-                  <Label
-                    htmlFor="time"
-                    className="text-yellow-800 font-medium flex items-center gap-2"
-                  >
-                    <Clock className="h-4 w-4" />
-                    Select Time
+                  <Label htmlFor="time" className="text-yellow-800 font-medium flex items-center gap-2">
+                    <Clock className="h-4 w-4" /> Select Time
                   </Label>
-
                   <Select
                     value={time}
-                    onValueChange={(value) =>
-                      updateField("time", value, setTime)
-                    }
-                    disabled={!date}
+                    onValueChange={(value) => updateField("time", value, setTime)}
+                    disabled={!date || loading}
                   >
                     <SelectTrigger
+                      ref={(node) => { fieldRefs.current.time = node; }}
                       id="time"
                       aria-invalid={Boolean(validationErrors.time)}
                       className="border-yellow-200 focus:ring-yellow-500"
                     >
-                      <SelectValue
-                        placeholder={
-                          date ? "Select Abhishek time" : "Select a date first"
-                        }
-                      />
+                      <SelectValue placeholder={date ? "Select Abhishek time" : "Select a date first"} />
                     </SelectTrigger>
-
                     <SelectContent>
                       {TIME_SLOTS.map((slot) => {
                         const disabled = isPastTimeSlot(slot.value);
-
                         return (
-                          <SelectItem
-                            key={slot.value}
-                            value={slot.value}
-                            disabled={disabled}
-                          >
-                            {slot.label}
-                            {disabled ? " (Past time)" : ""}
+                          <SelectItem key={slot.value} value={slot.value} disabled={disabled}>
+                            {slot.label}{disabled ? " (Past time)" : ""}
                           </SelectItem>
                         );
                       })}
                     </SelectContent>
                   </Select>
-
                   {fieldError("time")}
-
-                  {date === todayString &&
-                    TIME_SLOTS.every((slot) => isPastTimeSlot(slot.value)) && (
-                      <p className="text-sm text-amber-700">
-                        All time slots for today have passed. Please select
-                        another date.
-                      </p>
-                    )}
+                  {date === todayString && TIME_SLOTS.every((slot) => isPastTimeSlot(slot.value)) && (
+                    <p className="text-sm text-amber-700">All time slots for today have passed. Please select another date.</p>
+                  )}
                 </div>
 
-                {/* Payment QR */}
                 <div className="space-y-2">
                   <Label className="text-yellow-800 font-medium flex items-center gap-2">
-                    <CreditCard className="h-4 w-4" />
-                    Scan and Pay
+                    <CreditCard className="h-4 w-4" /> Scan and Pay
                   </Label>
-
                   <div className="bg-white p-3 sm:p-4 border border-yellow-200 rounded-xl flex flex-col items-center">
                     <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-lg font-semibold px-4 py-2 rounded-full mb-4 text-center">
                       Abhishek Fee: ₹1001
                     </div>
-
                     <div className="w-48 h-48 p-2 bg-white rounded-lg shadow-sm border border-yellow-100">
-                      <img
-                        src="/qr.png"
-                        alt="QR code for Abhishek payment"
-                        width={180}
-                        height={180}
-                        className="w-full h-full object-contain"
-                      />
+                      <img src="/qr.png" alt="QR code for Abhishek payment" width={180} height={180} className="w-full h-full object-contain" />
                     </div>
-
                     <p className="mt-4 text-sm text-center text-gray-600">
-                      After paying, enter the transaction id shown in your
-                      payment app.
+                      After paying, enter the transaction ID shown in your payment app.
                     </p>
-
                     <div className="mt-3 w-full text-center bg-amber-50 border border-yellow-200 text-yellow-900 text-sm font-medium px-3 py-3 rounded-lg">
                       <p className="mb-1">Payment assistance</p>
                       <p>+91 9130340304</p>
@@ -538,11 +502,9 @@ export default function AbhishekBooking() {
                   </div>
                 </div>
 
-                {/* Transaction ID */}
                 <div className="space-y-3">
                   <button
                     type="button"
-                    cursor="pointer"
                     onClick={openTransactionPreview}
                     className="group flex w-full items-center gap-3 rounded-xl border border-yellow-200 bg-amber-50 p-3 text-left transition hover:border-yellow-400 hover:bg-amber-100 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2"
                     aria-haspopup="dialog"
@@ -550,94 +512,111 @@ export default function AbhishekBooking() {
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-yellow-100 text-yellow-800">
                       <ImageIcon className="h-5 w-5" />
                     </span>
-
                     <span className="min-w-0 flex-1">
-                      <span className="block text-sm font-semibold text-yellow-900">
-                        Where can I find my Transaction ID?
-                      </span>
-                      <span className="mt-1 block text-xs text-gray-600">
-                        Click here to view the payment screenshot
-                      </span>
+                      <span className="block text-sm font-semibold text-yellow-900">Where can I find my Transaction ID?</span>
+                      <span className="mt-1 block text-xs text-gray-600">Click here to view the payment screenshot</span>
                     </span>
-
                     <ZoomIn className="h-5 w-5 shrink-0 text-yellow-700" />
                   </button>
-
                   <p className="text-sm text-gray-600">
-                    Find the UTR, UPI reference number, or transaction ID in
-                    your payment app's successful payment details.
+                    Find the UTR, UPI reference number, or transaction ID in your payment app&apos;s successful payment details.
                   </p>
-
-                  <Label
-                    htmlFor="transactionID"
-                    className="text-yellow-800 font-medium flex items-center gap-2"
-                  >
-                    <CreditCard className="h-4 w-4" />
-                    Transaction ID / UTR Number
+                  <Label htmlFor="transactionID" className="text-yellow-800 font-medium flex items-center gap-2">
+                    <CreditCard className="h-4 w-4" /> Transaction ID / UTR Number
                   </Label>
                   <Input
+                    ref={(node) => { fieldRefs.current.transactionId = node; }}
                     id="transactionID"
                     value={transactionId}
-                    onChange={(e) =>
-                      updateField(
-                        "transactionId",
-                        e.target.value.replace(/\s/g, "").slice(0, 35),
-                        setTransactionId,
-                      )
-                    }
+                    onChange={(e) => updateField("transactionId", e.target.value.replace(/\s/g, "").slice(0, 35), setTransactionId)}
                     placeholder="Enter your transaction id"
                     maxLength={35}
                     autoComplete="off"
                     aria-invalid={Boolean(validationErrors.transactionId)}
+                    disabled={loading}
                     className="border-yellow-200 focus:border-yellow-500 focus:ring-yellow-500"
                   />
-
                   {fieldError("transactionId")}
-
                   <div className="flex items-start gap-2 rounded-lg bg-gray-50 p-3 text-xs leading-relaxed text-gray-600">
                     <Info className="h-4 w-4 shrink-0 mt-0.5 text-yellow-700" />
-                    <p>
-                      Enter 8–35 letters, numbers, or hyphens as shown in your
-                      payment app. Do not enter the amount, date, or recipient's
-                      phone number.
-                    </p>
+                    <p>Enter 8–35 letters, numbers, or hyphens as shown in your payment app. Do not enter the amount, date, or recipient&apos;s phone number.</p>
                   </div>
                 </div>
               </CardContent>
 
-              <div className="px-6 pb-4">
-                {success && (
+              {success && (
+                <div className="px-6 pb-4">
                   <Alert className="border-green-300 bg-green-50 text-green-800">
                     <AlertDescription className="flex items-center gap-2">
-                      <span className="bg-green-100 p-1 rounded-full">✓</span>
+                      <CheckCircle2 className="h-5 w-5 shrink-0" />
                       Your Abhishek booking has been submitted successfully!
                     </AlertDescription>
                   </Alert>
-                )}
-              </div>
+                </div>
+              )}
 
-              <CardFooter className="px-6 pb-6">
+              <CardFooter className="px-6 pb-6 flex-col gap-3">
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold"
+                  aria-busy={loading}
+                  className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  {loading ? "Booking..." : "Book Abhishek"}
+                  {loading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <LoaderCircle className="h-4 w-4 animate-spin" /> Submitting… Please wait
+                    </span>
+                  ) : (
+                    "Book Abhishek"
+                  )}
                 </Button>
+                {loading && (
+                  <p className="text-center text-xs leading-relaxed text-amber-800">
+                    This can take 2–3 minutes. Do not press the button again or refresh this page.
+                  </p>
+                )}
               </CardFooter>
             </form>
           </Card>
         </div>
       </div>
 
-      {/* Full-screen, responsive image viewer */}
+      {/* Toast notification */}
+      {toast && (
+        <div className="fixed inset-x-3 top-4 z-[200] flex justify-center sm:inset-x-auto sm:right-5 sm:top-5">
+          <div
+            role={toast.type === "error" ? "alert" : "status"}
+            aria-live={toast.type === "error" ? "assertive" : "polite"}
+            className={`flex w-full max-w-md items-start gap-3 rounded-xl border px-4 py-3 shadow-2xl animate-in fade-in slide-in-from-top-2 ${
+              toast.type === "success"
+                ? "border-green-300 bg-green-50 text-green-900"
+                : "border-red-300 bg-red-50 text-red-900"
+            }`}
+          >
+            {toast.type === "success" ? (
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-600" />
+            ) : (
+              <Info className="mt-0.5 h-5 w-5 shrink-0 text-red-600" />
+            )}
+            <p className="flex-1 text-sm font-medium leading-relaxed">{toast.message}</p>
+            <button
+              type="button"
+              onClick={() => setToast(null)}
+              aria-label="Dismiss notification"
+              className="rounded-md p-1 opacity-70 transition hover:bg-black/5 hover:opacity-100"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Full-screen responsive transaction screenshot viewer */}
       {showTransactionPreview && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/65 p-2 backdrop-blur-md sm:p-4"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) {
-              closeTransactionPreview();
-            }
+          onClick={(event) => {
+            if (event.target === event.currentTarget) closeTransactionPreview();
           }}
           role="presentation"
         >
@@ -647,7 +626,6 @@ export default function AbhishekBooking() {
             aria-label="Transaction ID screenshot preview"
             className="relative flex h-[96dvh] w-full max-w-5xl flex-col items-center justify-center overflow-hidden rounded-xl bg-black/20 sm:h-[94dvh]"
           >
-            {/* Close button */}
             <button
               type="button"
               onClick={closeTransactionPreview}
@@ -657,46 +635,20 @@ export default function AbhishekBooking() {
               <X className="h-6 w-6" />
             </button>
 
-            {/* Zoom controls */}
             <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1 rounded-full border border-white/20 bg-black/75 p-1.5 text-white shadow-xl backdrop-blur-md sm:bottom-4">
-              <button
-                type="button"
-                onClick={() => changeZoom(-0.25)}
-                disabled={zoom <= 1}
-                aria-label="Zoom out"
-                className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40"
-              >
+              <button type="button" onClick={() => changeZoom(-0.25)} disabled={zoom <= 1} aria-label="Zoom out" className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40">
                 <ZoomOut className="h-5 w-5" />
               </button>
-
-              <span className="min-w-[52px] text-center text-sm font-medium tabular-nums">
-                {Math.round(zoom * 100)}%
-              </span>
-
-              <button
-                type="button"
-                onClick={() => changeZoom(0.25)}
-                disabled={zoom >= 4}
-                aria-label="Zoom in"
-                className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40"
-              >
+              <span className="min-w-[52px] text-center text-sm font-medium tabular-nums">{Math.round(zoom * 100)}%</span>
+              <button type="button" onClick={() => changeZoom(0.25)} disabled={zoom >= 4} aria-label="Zoom in" className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-white/20 disabled:cursor-not-allowed disabled:opacity-40">
                 <ZoomIn className="h-5 w-5" />
               </button>
-
               <span className="mx-1 h-6 w-px bg-white/25" />
-
-              <button
-                type="button"
-                onClick={resetZoom}
-                disabled={zoom === 1}
-                aria-label="Reset image zoom"
-                className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-white/20 disabled:opacity-40"
-              >
+              <button type="button" onClick={resetZoom} disabled={zoom === 1} aria-label="Reset image zoom" className="flex h-10 w-10 items-center justify-center rounded-full transition hover:bg-white/20 disabled:opacity-40">
                 <RotateCcw className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Image fits the available screen at 100% */}
             <div
               className="flex h-full w-full items-center justify-center overflow-hidden"
               onWheel={handleImageWheel}
@@ -718,14 +670,10 @@ export default function AbhishekBooking() {
                   height: "auto",
                   transform: `scale(${zoom})`,
                   transformOrigin: "center center",
-                  transition: pinchStartDistance.current
-                    ? "none"
-                    : "transform 150ms ease-out",
+                  transition: "transform 150ms ease-out",
                 }}
               />
             </div>
-
-            {/* Minimal zoom hint */}
             <p className="pointer-events-none absolute bottom-[66px] left-0 right-0 text-center text-xs text-white/80 sm:bottom-[72px]">
               Pinch to zoom on mobile · Use + / − or mouse wheel
             </p>
